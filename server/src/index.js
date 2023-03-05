@@ -2,6 +2,7 @@ require('dotenv').config()
 const express=require("express")
 const cors=require("cors")
 const session =require("express-session")
+let connect=require("./config/connectdb")
 const app=express()
 app.use(cors())
 app.use(express.json())
@@ -22,6 +23,7 @@ app.get("/",(req,res)=>{
 
 
 
-app.listen(process.env.PORT,()=>{
+app.listen(process.env.PORT,async ()=>{
+    let res=await connect()
     console.log("listening on port ",process.env.PORT)
 })
