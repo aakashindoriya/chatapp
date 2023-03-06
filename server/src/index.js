@@ -16,6 +16,9 @@ app.use(session({
       maxAge: null
     } 
  } ))
+
+
+
 app.get("/",(req,res)=>{
     res.status(200).send(`<h1>welcome to Aakash's chatting application</h1>`)
 })
