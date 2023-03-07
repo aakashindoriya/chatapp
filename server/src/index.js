@@ -3,6 +3,7 @@ const express=require("express")
 const cors=require("cors")
 const session =require("express-session")
 let connect=require("./config/connectdb")
+const userroute=require("./routes/userroutes")
 const app=express()
 app.use(cors())
 app.use(express.json())
@@ -23,7 +24,7 @@ app.get("/",(req,res)=>{
     res.status(200).send(`<h1>welcome to Aakash's chatting application</h1>`)
 })
 
-
+app.use("/user",userroute)
 
 
 app.listen(process.env.PORT,async ()=>{
