@@ -1,12 +1,17 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Check from './component/check';
+import { Box } from '@chakra-ui/react';
+import Nav from './component/hompage/Navbar';
 
 function App() {
   return (
-    <div className="App">
+    
+      <Box>
+        <Nav/>
       <Check />
-    </div>
+      </Box>
+  
   );
 }
 
