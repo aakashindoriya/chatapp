@@ -21,7 +21,8 @@ app.use(session({
 
 
 app.get("/",(req,res)=>{
-    res.status(200).send(`<h1>welcome to Aakash's chatting application</h1>`)
+    
+    res.status(200).send({message:`<h1>welcome to Aakash's chatting application</h1>`,session:req.session})
 })
 
 app.use("/user",userroute)

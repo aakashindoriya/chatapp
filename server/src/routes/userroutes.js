@@ -1,25 +1,13 @@
 const express=require("express")
-const User = require("../models/usermodel")
-const argon=require("argon2")
+const { SIGNUP,VARIFY ,LOGIN, USERINFO, LOGOUT, UPDATEPROFILE} = require("../controller/usercontroller")
+const { auth } = require("../middlewares/auth")
 const app=express.Router()
 
-app.post("/signup",async(req,res)=>{
-    let {email,password,role}=req.body
-    try{
-        let existinguser=await User.findOne({email:email})
-        if(!existinguser){
-            console.log(email,password,role)
-          password=await argon.hash(password)
-          await User.create({email,password,role})
-          res.status(201).send("user created")
-        }else{
-            res.status(401).send("user alredy registerd")
-        }
-    }catch(e){
-        res.status(400).send(e.message)
-    }
-})
-
-
+app.post("/signup",SIGNUP)
+app.get("/varify/:token",VARIFY)
+app.post("/login",LOGIN)
+app.get("/userinfo",USERINFO)
+app.post("/logout",LOGOUT)
+app.patch("/profile",auth,UPDATEPROFILE)
 
 module.exports=app
