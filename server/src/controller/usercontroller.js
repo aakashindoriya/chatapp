@@ -103,7 +103,7 @@ const UPDATEPROFILE=async (req,res)=>{
   try {
     let user =await User.updateOne({email:req.useremail},{$set:{...req.body}})
     return res.status(201).send("profile updated succcessfully")
-  } catch (error) {
+  } catch (error) { 
     return res.status(400).send(error.message)
   }
 }

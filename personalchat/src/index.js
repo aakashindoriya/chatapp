@@ -8,13 +8,16 @@ import {ChakraProvider} from "@chakra-ui/react"
 import theme from './component/Theme/chkratheme';
 import { Provider } from 'react-redux';
 import { store } from './component/redux/store';
+import SocketProvider from './component/Appcontex/SoketContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
     <ChakraProvider theme={theme}>
     <Provider store={store} >
+      <SocketProvider>
     <App />
+    </SocketProvider>
     </Provider>
     </ChakraProvider>
     </BrowserRouter>

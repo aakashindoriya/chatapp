@@ -6,6 +6,7 @@ const auth=async (req,res,next)=>{
             verifyed=await jwt.verify(req.session.token,process.env.TOKENSEC)
             req.useremail=verifyed.email
             req.userrole=verifyed.role
+            req.userid=verifyed._id
             next()
         }else{
             res.status(404).send("please login")

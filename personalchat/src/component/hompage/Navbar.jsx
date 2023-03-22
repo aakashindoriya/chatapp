@@ -1,37 +1,21 @@
 import {
   Box,
   Flex,
-  Link,
   Button,
-  useDisclosure,
   useColorModeValue,
   Stack,
   Image,
   useColorMode,
-  Menu
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import logo from "../../pp.jpg"
 import { motion } from 'framer-motion';
 import UserMenu from './Menu';
 
-const NavLink = ({ children }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={'md'}
-    _hover={{
-      textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
-    }}
-    href={'#'}>
-    {children}
-  </Link>
-);
+
 
 export default function Nav() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box pos={"sticky"} top="0px">
       <Box as={motion.div}
@@ -57,7 +41,7 @@ export default function Nav() {
               <Button onClick={toggleColorMode}>
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
               </Button>
-                gasa
+               
               <UserMenu />
             </Stack>
           </Flex>

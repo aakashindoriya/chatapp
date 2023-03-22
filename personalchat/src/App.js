@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react';
 import Nav from './component/hompage/Navbar';
 import Allrouts from './component/Allroutes/Allrouts';
 import { useEffect } from 'react';
-import Messaging from './component/message/Message';
+import ChatBox from './component/hompage/MessageBox';
 function App() {
   useEffect(()=>{
 
@@ -13,7 +13,7 @@ function App() {
     
       <Box>
         <Nav/>
-        
+        <ChatBox />
        <Allrouts />
       </Box>
   
