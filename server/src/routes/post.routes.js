@@ -1,6 +1,6 @@
 const express=require("express")
-const { ADDNEWPOST, GETALLPOSTS, LIKEPOST, COMMENTONAPOST } = require("../controller/postcontroller")
-const authMiddleware = require("../middlewares/auth")
+const { ADDNEWPOST, GETALLPOSTS, LIKEPOST, COMMENTONAPOST } = require("../controllers/post.controllers")
+const authMiddleware = require("../middlewares/auth.middleware")
 const app=express.Router()
 
 app.post("/newpost",authMiddleware,ADDNEWPOST)

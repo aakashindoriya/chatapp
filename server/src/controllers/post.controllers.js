@@ -5,7 +5,7 @@ const Post = require("../models/post.model")
 const ADDNEWPOST=async(req,res)=>{
 const {image,caption}=req.body
 try {
-    let user=req.user.id
+    let user=req.userid
     let post=await Post.create({image,caption,user})
     res.status(201).send(post)
 } catch (error) {
@@ -43,7 +43,7 @@ const LIKEPOST=async(req,res)=>{
     try {
         const post=await Post.findOne({_id:postid})
         console.log(post,post.likes)
-        if(post.likes.includes(req.user.id)){
+        if(post.likes.includes(req.userid)){
          return res.status(400).send("post already licked")
         }
         await Post.updateOne({_id:postid},{$push:{likes:req.user.id}})
@@ -55,7 +55,7 @@ const LIKEPOST=async(req,res)=>{
 
 const COMMENTONAPOST=async(req,res)=>{
     let {text}=req.body
-    let user=req.user.id
+    let user=req.userid
     let post=req.params.postid
     try {
         let makeComment=await Comment.create({user,post,text})
